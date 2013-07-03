@@ -1,0 +1,28 @@
+{
+    "name": "reinhardt-compressor",
+    "version": "0.1.0",
+    "description": "",
+    "keywords": ["template", "asset managment"],
+    "homepage": "https://github.com/oberhamsi/reinhard-compressor",
+    "maintainers": [{
+            "name": "Simon Oberhammer",
+            "web": "http://nekapuzer.at/",
+            "email": "simon@nekapuzer.at"
+        }],
+    "contributors": [
+    ],
+    "dependencies": {},
+    "bugs": "",
+    "licenses": [{
+        "type": "Apache License Version 2.0",
+        "url": "http://www.apache.org/licenses/"
+    }],
+    "repositories": [{
+        "type": "git",
+        "url": "https://github.com/oberhamsi/reinhard-compressor.git"
+    }],
+    "engines": {
+        "ringojs": ">= 0.9"
+    },
+    "main": "./lib/main.js"
+}

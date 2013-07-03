@@ -1,0 +1,25 @@
+<html>
+<head>
+
+   {% compress "screen, handheld" %}
+      css/reset.css
+      css/showcase.css
+      css/main.css
+   {% endcompress %}
+
+   {% compress "main.js" %}
+      js/{{variableJs|lower}}
+      js/main.js
+   {% endcompress %}
+</head>
+
+<body style="width:30em">
+   <h1>Reinhardt Compressor</h1>
+
+   <p class="highlight showcase">
+      This paragraph should have a yellow background and bold font.
+   </p>
+
+<body>
+
+</html>
