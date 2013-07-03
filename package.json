@@ -11,7 +11,10 @@
         }],
     "contributors": [
     ],
-    "dependencies": {},
+    "dependencies": {
+        "reinhardt": ">= 0.1",
+        "ringo-ehcache": ">= 0.1",
+    },
     "bugs": "",
     "licenses": [{
         "type": "Apache License Version 2.0",
