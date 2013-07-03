@@ -4,16 +4,20 @@ var {CacheManager} = require('ringo-ehcache');
 
 var app = exports.app = new Application();
 app.configure('static', 'route');
+// serve both: the normal "static" and the "static.compressed" URL.
+// those must match the configuration you give below in the environment
 app.static(module.resolve('./static/'), '', '/static');
 app.static(module.resolve('./static.compressed/'), '', '/static.compressed');
 
-
+// optional caching
 var cacheManager = module.singleton('cacheManager', function() {
    return new CacheManager('/tmp/compressorcache/');
 });
+
 var env = new Environment({
    loader: [module.resolve('./templates/')],
    tags: [require('reinhardt-compressor')],
+   // Compressor configuration
    compressor : {
       enabled: true,
       source: {
@@ -24,8 +28,8 @@ var env = new Environment({
          url: '/static.compressed/',
          path: module.resolve('static.compressed')
       },
-      cache: cacheManager,
-      cacheTTL: 1000
+      cache: cacheManager.getCache('fooCompressor'),
+      cacheTTL: 1
    }
 });
 
@@ -36,7 +40,6 @@ app.get('/', function(req) {
 });
 
 var start = function() {
-   cacheManager.addCache('compressor');
    require("ringo/httpserver").main(module.id);
 }
 

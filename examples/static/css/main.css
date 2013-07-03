@@ -1,0 +1,12 @@
+body {
+	margin: 1em;
+}
+
+h1 {
+	font-size: x-large;
+}
+
+.highlight {
+	padding-left:30px;
+   background: yellow url('../images/arrow.left.png') no-repeat scroll 0 0;
+}

@@ -7,7 +7,7 @@
       css/main.css
    {% endcompress %}
 
-   {% compress "main.js" %}
+   {% compress %}
       js/{{variableJs|lower}}
       js/main.js
    {% endcompress %}
@@ -17,7 +17,7 @@
    <h1>Reinhardt Compressor</h1>
 
    <p class="highlight showcase">
-      This paragraph should have a yellow background and bold font.
+      This paragraph should have yellow background, bold font and an arrow background pointing right.
    </p>
 
 <body>
