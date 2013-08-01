@@ -11,8 +11,11 @@ app.static(module.resolve('./static.compressed/'), '', '/static.compressed');
 
 // optional caching
 var cacheManager = module.singleton('cacheManager', function() {
-   return new CacheManager('/tmp/compressorcache/');
+   var cacheManager = new CacheManager('/tmp/compressorcache/');
+   cacheManager.addCache('compressor');
+   return cacheManager;
 });
+
 
 var env = new Environment({
    loader: [module.resolve('./templates/')],
@@ -28,8 +31,8 @@ var env = new Environment({
          url: '/static.compressed/',
          path: module.resolve('static.compressed')
       },
-      cache: cacheManager.getCache('fooCompressor'),
-      cacheTTL: 1
+      cache: cacheManager.getCache('compressor'),
+      cacheTTL: 10
    }
 });
 
