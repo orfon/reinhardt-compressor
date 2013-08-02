@@ -1,9 +1,9 @@
 {
     "name": "reinhardt-compressor",
     "version": "0.1.0",
-    "description": "",
-    "keywords": ["template", "asset managment"],
-    "homepage": "https://github.com/oberhamsi/reinhard-compressor",
+    "description": "Reinhardt asset manager",
+    "keywords": ["template", "asset managment", "compression"],
+    "homepage": "https://github.com/orfon/reinhard-compressor",
     "maintainers": [{
             "name": "Simon Oberhammer",
             "web": "http://nekapuzer.at/",
@@ -22,7 +22,7 @@
     }],
     "repositories": [{
         "type": "git",
-        "url": "https://github.com/oberhamsi/reinhard-compressor.git"
+        "url": "https://github.com/orfon/reinhard-compressor.git"
     }],
     "engines": {
         "ringojs": ">= 0.9"
