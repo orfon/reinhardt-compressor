@@ -37,40 +37,32 @@ To enable caching you must provide a cache implementation. I suggest you use `ri
 	   compressor : {
 	   	cache: cacheManager.getCache('fooCompressor'),
 	   	cacheTTL: 60,
-	      enabled: true,
-	      source: {
-	         url: '/static/',
-	         path: module.resolve('static')
-	      },
-	      destination: {
-	         url: '/static.compressed/',
-	         path: module.resolve('static.compressed')
-	      }
+	   	....
 	   }
 
-== behind the scenes ===
+== Behind the scenes ==
 
-The following happens when rendering a {{compress}} tag:
+Within the request-response cycle, file modification timestamps are periodically checked (depending on the value of `cacheTTL`) and modified files are recompressed.
+
+When a {% compress %} tag is encoutered, the following happens:
 
 The content of the compress-tag is split by "\n". Each line is assumed to be one css or js file
-relative to `source.path`, those are our input files. Within one compress-tag all input files
-must be of the same type!
+relative to `source.path`, those are our input files. All input files within one compress-tag must be of the same type.
 
-If `compressor.enabled` is `false`:
-   * output one <style> or <script> per input file
-   * no futher processing happens
+    if compressor.enabled == false
+      for each input file
+        print <style> or <script> tag
+	   exit
 
-If the compressor is enabled and the cache is enabled:
-   * we do a cache lookup
-   * cache key is the hash of the input files (not their contents! just the filepaths themselves)
-   * if we get a cache hit
-      * the cache content is returned
-      * no further processing happens
+    memory cache key = input file names
+    if memory cache key in cache:
+      print cacheContent
+      exit
 
-If we get a cache miss:
+    file cache key = input file names and their modification time
+    if file cache key does not exist on filesystem:
+      compress the input files to a file named like file cache key
 
-  * `yuicompress` checks the modification time of the input files
-  * if the input files are newer then the output: recompress
-
-Finally, the html output for the compressed file is generated and put into the cache if enabled, or just
-returned otherwise.
+    html = <style> or <script> linking to file cache key
+    put html into cache as memory cache key
+    print html
