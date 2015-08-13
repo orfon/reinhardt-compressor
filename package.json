@@ -18,7 +18,7 @@
     ],
     "dependencies": {
         "reinhardt": ">= 0.1",
-        "ringo-ehcache": ">= 0.1",
+        "ringo-ehcache": ">= 0.1"
     },
     "bugs": "",
     "licenses": [{
