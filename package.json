@@ -1,6 +1,6 @@
 {
     "name": "reinhardt-compressor",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Reinhardt asset manager",
     "keywords": ["template", "asset managment", "compression"],
     "homepage": "https://github.com/orfon/reinhard-compressor",
